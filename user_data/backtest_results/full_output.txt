@@ -1,0 +1,284 @@
+2026-07-21 09:34:10,461 - freqtrade - INFO - freqtrade 2026.6
+2026-07-21 09:34:11,710 - freqtrade.configuration.load_config - INFO - Using config: user_data/config.json ...
+2026-07-21 09:34:11,712 - freqtrade.loggers - INFO - Enabling colorized output.
+2026-07-21 09:34:11,713 - freqtrade.loggers - INFO - Logfile configured
+2026-07-21 09:34:11,713 - freqtrade.loggers - INFO - Verbosity set to 0
+2026-07-21 09:34:11,714 - freqtrade.configuration.configuration - INFO - Parameter -i/--timeframe detected ... Using timeframe: 1h ...
+2026-07-21 09:34:11,714 - freqtrade.configuration.configuration - INFO - Using max_open_trades: 3 ...
+2026-07-21 09:34:11,714 - freqtrade.configuration.configuration - INFO - Parameter --timerange detected: 20230721-20260721 ...
+2026-07-21 09:34:11,715 - freqtrade.configuration.configuration - INFO - Using user-data directory: /home/user/autotrading/user_data ...
+2026-07-21 09:34:11,715 - freqtrade.configuration.configuration - INFO - Using data directory: /home/user/autotrading/user_data/data/binance ...
+2026-07-21 09:34:11,715 - freqtrade.configuration.configuration - INFO - Storing backtest results to user_data/backtest_results/candle2_3y.json ...
+2026-07-21 09:34:11,715 - freqtrade.configuration.configuration - WARNING - DEPRECATED: Using `--export-filename` has no impact when backtesting. Please use `--notes` to annotate backtest results and 
+`--backtest-directory` to specify the output directory. 
+2026-07-21 09:34:11,716 - freqtrade.configuration.configuration - INFO - Parameter --export detected: trades ...
+2026-07-21 09:34:11,716 - freqtrade.configuration.configuration - INFO - Parameter --breakdown detected ...
+2026-07-21 09:34:11,716 - freqtrade.configuration.configuration - INFO - Parameter --cache=none detected ...
+2026-07-21 09:34:11,717 - freqtrade.configuration.configuration - INFO - Filter trades by timerange: 20230721-20260721
+2026-07-21 09:34:11,717 - freqtrade.exchange.check_exchange - INFO - Checking exchange...
+2026-07-21 09:34:11,725 - freqtrade.exchange.check_exchange - INFO - Exchange "binance" is officially supported by the Freqtrade development team.
+2026-07-21 09:34:11,725 - freqtrade.configuration.configuration - INFO - Using pairlist from configuration.
+2026-07-21 09:34:11,726 - freqtrade.configuration.config_validation - INFO - Validating configuration ...
+2026-07-21 09:34:11,728 - freqtrade.commands.optimize_commands - INFO - Starting freqtrade in Backtesting mode
+2026-07-21 09:34:11,729 - freqtrade.exchange.exchange - INFO - Instance is running with dry_run enabled
+2026-07-21 09:34:11,729 - freqtrade.exchange.exchange - INFO - Using CCXT 4.5.67
+2026-07-21 09:34:11,744 - freqtrade.exchange.exchange - INFO - Using Exchange "Binance"
+2026-07-21 09:34:11,745 - freqtrade.resolvers.exchange_resolver - INFO - Using resolved exchange 'Binance'...
+2026-07-21 09:34:11,755 - freqtrade.resolvers.iresolver - INFO - Using resolved strategy Candle2 from '/home/user/autotrading/user_data/strategies/Candle2.py'...
+2026-07-21 09:34:11,756 - freqtrade.strategy.hyper - INFO - Loading parameters from file /home/user/autotrading/user_data/strategies/Candle2.json
+2026-07-21 09:34:11,756 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'timeframe' with value from the configuration: 1h.
+2026-07-21 09:34:11,757 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_currency' with value from the configuration: USDT.
+2026-07-21 09:34:11,757 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_amount' with value from the configuration: unlimited.
+2026-07-21 09:34:11,757 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'unfilledtimeout' with value from the configuration: {'entry': 10, 'exit': 10, 'unit': 'minutes', 
+'exit_timeout_count': 0}.
+2026-07-21 09:34:11,757 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'max_open_trades' with value from the configuration: 3.
+2026-07-21 09:34:11,758 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using minimal_roi: {'0': 0.125, '480': 0.09, '1200': 0.056, '2640': 0}
+2026-07-21 09:34:11,758 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using timeframe: 1h
+2026-07-21 09:34:11,758 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stoploss: -0.11
+2026-07-21 09:34:11,758 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop: True
+2026-07-21 09:34:11,759 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop_positive: 0.01
+2026-07-21 09:34:11,759 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop_positive_offset: 0.259
+2026-07-21 09:34:11,759 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_only_offset_is_reached: False
+2026-07-21 09:34:11,759 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_custom_stoploss: True
+2026-07-21 09:34:11,759 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using process_only_new_candles: True
+2026-07-21 09:34:11,760 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_types: {'entry': 'limit', 'exit': 'limit', 'stoploss': 'limit', 'stoploss_on_exchange': False, 
+'stoploss_on_exchange_interval': 60}
+2026-07-21 09:34:11,760 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_time_in_force: {'entry': 'GTC', 'exit': 'GTC'}
+2026-07-21 09:34:11,760 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_currency: USDT
+2026-07-21 09:34:11,760 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_amount: unlimited
+2026-07-21 09:34:11,761 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using startup_candle_count: 500
+2026-07-21 09:34:11,761 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using unfilledtimeout: {'entry': 10, 'exit': 10, 'unit': 'minutes', 'exit_timeout_count': 0}
+2026-07-21 09:34:11,761 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_exit_signal: True
+2026-07-21 09:34:11,761 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_only: False
+2026-07-21 09:34:11,761 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_roi_if_entry_signal: False
+2026-07-21 09:34:11,762 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_offset: 0.0
+2026-07-21 09:34:11,762 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using disable_dataframe_checks: False
+2026-07-21 09:34:11,762 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_buying_expired_candle_after: 0
+2026-07-21 09:34:11,762 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using position_adjustment_enable: True
+2026-07-21 09:34:11,762 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_entry_position_adjustment: -1
+2026-07-21 09:34:11,763 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_open_trades: 3
+2026-07-21 09:34:11,763 - freqtrade.configuration.config_validation - INFO - Validating configuration ...
+2026-07-21 09:34:11,767 - freqtrade.resolvers.iresolver - INFO - Using resolved pairlist StaticPairList from 
+'/home/user/autotrading/.venv/lib/python3.11/site-packages/freqtrade/plugins/pairlist/StaticPairList.py'...
+2026-07-21 09:34:11,768 - freqtrade.optimize.backtesting - INFO - Using fee 0.1000% - worst case fee from exchange (lowest tier).
+/home/user/autotrading/.venv/lib/python3.11/site-packages/pandas/io/feather_format.py:178: FutureWarning: pyarrow.feather.read_table is deprecated as of 24.0.0. Use pyarrow.ipc.open_file() / RecordBatchFileReader instead. Feather V2 is the Arrow IPC file format.
+  pa_table = feather.read_table(
+2026-07-21 09:34:11,825 - freqtrade.optimize.backtesting - INFO - Loading data from 2023-06-30 04:00:00 up to 2026-07-21 00:00:00 (1116 days).
+2026-07-21 09:34:12,009 - freqtrade.optimize.backtesting - INFO - Dataload complete. Calculating indicators
+2026-07-21 09:34:12,010 - freqtrade.optimize.backtesting - INFO - Running backtesting for Strategy Candle2
+2026-07-21 09:34:12,011 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): bear_rsi_threshold = 40.0
+2026-07-21 09:34:12,011 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): block_exit = True
+2026-07-21 09:34:12,011 - freqtrade.strategy.hyper - INFO - Strategy Parameter: sell_threshold = 3.0
+2026-07-21 09:34:12,011 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): use_11 = True
+2026-07-21 09:34:12,012 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): use_12 = True
+2026-07-21 09:34:12,012 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): use_13 = True
+2026-07-21 09:34:12,012 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): use_tsl1 = True
+2026-07-21 09:34:12,013 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): use_tsl2 = True
+2026-07-21 09:34:12,013 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): bull_4h_threshold = 60.0
+2026-07-21 09:34:12,013 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): bull_rsi_limit = 70.0
+2026-07-21 09:34:12,014 - freqtrade.strategy.hyper - INFO - Strategy Parameter: buy_threshold = 6.6
+2026-07-21 09:34:12,014 - freqtrade.strategy.hyper - INFO - Strategy Parameter: fast_rsi = 6
+2026-07-21 09:34:12,014 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): l_window_size = 30
+2026-07-21 09:34:12,015 - freqtrade.strategy.hyper - INFO - Strategy Parameter: rsi_threshold = 40.0
+2026-07-21 09:34:12,015 - freqtrade.strategy.hyper - INFO - Strategy Parameter: sr_length = 12
+2026-07-21 09:34:12,015 - freqtrade.strategy.hyper - INFO - Strategy Parameter: sr_shift = 12
+2026-07-21 09:34:12,016 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): u_window_size = 90
+2026-07-21 09:34:12,016 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): use_1 = True
+2026-07-21 09:34:12,016 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): use_2 = True
+2026-07-21 09:34:12,016 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): use_3 = True
+2026-07-21 09:34:12,017 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): use_4 = True
+2026-07-21 09:34:12,017 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): use_5 = True
+2026-07-21 09:34:12,017 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): use_6 = True
+2026-07-21 09:34:12,017 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): use_7 = True
+2026-07-21 09:34:12,021 - freqtrade.data.dataprovider - INFO - Loading data for BTC/USDT 4h from 2023-04-28 16:00:00 to 2026-07-21 00:00:00
+/home/user/autotrading/.venv/lib/python3.11/site-packages/pandas/io/feather_format.py:178: FutureWarning: pyarrow.feather.read_table is deprecated as of 24.0.0. Use pyarrow.ipc.open_file() / RecordBatchFileReader instead. Feather V2 is the Arrow IPC file format.
+  pa_table = feather.read_table(
+2026-07-21 09:34:23,895 - freqtrade.optimize.backtesting - INFO - Backtesting with data from 2023-07-21 00:00:00 up to 2026-07-21 00:00:00 (1096 days).
+backtest ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4/4         100% • 0:00:12 • 0:00:00
+backtest ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 26304/26304 100% • 0:00:24 • 0:00:00
+2026-07-21 09:34:38,481 - freqtrade.misc - INFO - dumping json to "/home/user/autotrading/user_data/backtest_results/backtest-result-2026-07-21_09-34-38.meta.json"
+/home/user/autotrading/.venv/lib/python3.11/site-packages/pandas/io/feather_format.py:77: FutureWarning: pyarrow.feather.write_feather is deprecated as of 24.0.0. Use pyarrow.ipc.new_file() / RecordBatchFileWriter instead. Feather V2 is the Arrow IPC file format.
+  feather.write_feather(df, handles.handle, **kwargs)
+/home/user/autotrading/.venv/lib/python3.11/site-packages/pandas/io/feather_format.py:77: FutureWarning: pyarrow.feather.write_feather is deprecated as of 24.0.0. Use pyarrow.ipc.new_file() / RecordBatchFileWriter instead. Feather V2 is the Arrow IPC file format.
+  feather.write_feather(df, handles.handle, **kwargs)
+Result for strategy Candle2
+                                             BACKTESTING REPORT                                              
+┏━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃     Pair ┃ Trades ┃ Avg Profit % ┃ Tot Profit USDT ┃ Tot Profit % ┃ Avg Duration ┃  Win  Draw  Loss  Win% ┃
+┡━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ BTC/USDT │    504 │        -0.26 │       -3624.237 │       -36.24 │     19:15:00 │  217     0   287  43.1 │
+│    TOTAL │    504 │        -0.26 │       -3624.237 │       -36.24 │     19:15:00 │  217     0   287  43.1 │
+└──────────┴────────┴──────────────┴─────────────────┴──────────────┴──────────────┴────────────────────────┘
+                                         LEFT OPEN TRADES REPORT                                          
+┏━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃  Pair ┃ Trades ┃ Avg Profit % ┃ Tot Profit USDT ┃ Tot Profit % ┃ Avg Duration ┃  Win  Draw  Loss  Win% ┃
+┡━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ TOTAL │      0 │          0.0 │           0.000 │          0.0 │         0:00 │    0     0     0     0 │
+└───────┴────────┴──────────────┴─────────────────┴──────────────┴──────────────┴────────────────────────┘
+                                                        ENTER TAG STATS                                                         
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                Enter Tag ┃ Entries ┃ Avg Profit % ┃ Tot Profit USDT ┃ Tot Profit % ┃   Avg Duration ┃  Win  Draw  Loss  Win% ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Uptrend Inflection Cross │      92 │         0.07 │         209.685 │          2.1 │       19:17:00 │   48     0    44  52.2 │
+│           4h Extreme RSI │      25 │         0.33 │         205.187 │         2.05 │       13:22:00 │   14     0    11  56.0 │
+│            Support Cross │      35 │        -0.15 │        -181.221 │        -1.81 │       20:50:00 │   12     0    23  34.3 │
+│ Below Support 4h pull up │      57 │         -0.5 │        -793.374 │        -7.93 │       13:51:00 │   21     0    36  36.8 │
+│          Pattern and RSI │     102 │        -0.34 │        -966.536 │        -9.67 │       14:06:00 │   32     0    70  31.4 │
+│      Trending Bull Entry │     193 │         -0.4 │       -2097.978 │       -20.98 │ 1 day, 0:02:00 │   90     0   103  46.6 │
+│                    TOTAL │     504 │        -0.26 │       -3624.237 │       -36.24 │       19:15:00 │  217     0   287  43.1 │
+└──────────────────────────┴─────────┴──────────────┴─────────────────┴──────────────┴────────────────┴────────────────────────┘
+                                                        EXIT REASON STATS                                                        
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                Exit Reason ┃ Exits ┃ Avg Profit % ┃ Tot Profit USDT ┃ Tot Profit % ┃    Avg Duration ┃  Win  Draw  Loss  Win% ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━┩
+│         trailing_stop_loss │   158 │         1.79 │        7656.319 │        76.56 │        14:34:00 │  155     0     3  98.1 │
+│                        roi │    56 │         0.89 │        1383.443 │        13.83 │ 1 day, 22:05:00 │   47     0     9  83.9 │
+│        Above Resistance 4h │     9 │        -0.03 │         -10.958 │        -0.11 │         5:53:00 │    4     0     5  44.4 │
+│ Downtrend Inflection Cross │    62 │        -1.04 │       -1756.626 │       -17.57 │        17:30:00 │    4     0    58   6.5 │
+│         Trending Bear Exit │   219 │        -1.83 │      -10896.415 │      -108.96 │        16:48:00 │    7     0   212   3.2 │
+│                      TOTAL │   504 │        -0.26 │       -3624.237 │       -36.24 │        19:15:00 │  217     0   287  43.1 │
+└────────────────────────────┴───────┴──────────────┴─────────────────┴──────────────┴─────────────────┴────────────────────────┘
+                                                                       MIXED TAG STATS                                                                        
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                Enter Tag ┃                Exit Reason ┃ Trades ┃ Avg Profit % ┃ Tot Profit USDT ┃ Tot Profit % ┃     Avg Duration ┃  Win  Draw  Loss  Win% ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━┩
+│      Trending Bull Entry │         trailing_stop_loss │     61 │          1.8 │        3057.451 │        30.57 │         15:42:00 │   60     0     1  98.4 │
+│ Uptrend Inflection Cross │         trailing_stop_loss │     38 │         1.54 │        1554.908 │        15.55 │         14:36:00 │   37     0     1  97.4 │
+│          Pattern and RSI │         trailing_stop_loss │     21 │         2.08 │        1145.288 │        11.45 │         14:37:00 │   21     0     0   100 │
+│ Below Support 4h pull up │         trailing_stop_loss │     17 │         2.01 │         936.759 │         9.37 │         14:07:00 │   17     0     0   100 │
+│      Trending Bull Entry │                        roi │     34 │         0.65 │         606.477 │         6.06 │  1 day, 21:48:00 │   26     0     8  76.5 │
+│           4h Extreme RSI │         trailing_stop_loss │     12 │         1.58 │         512.843 │         5.13 │          8:05:00 │   11     0     1  91.7 │
+│            Support Cross │         trailing_stop_loss │      9 │         1.91 │         449.070 │         4.49 │         16:07:00 │    9     0     0   100 │
+│ Uptrend Inflection Cross │                        roi │     10 │         1.28 │         362.659 │         3.63 │  1 day, 19:36:00 │   10     0     0   100 │
+│           4h Extreme RSI │                        roi │      1 │          5.6 │         156.730 │         1.57 │         20:00:00 │    1     0     0   100 │
+│          Pattern and RSI │                        roi │      5 │         1.08 │         149.178 │         1.49 │  1 day, 22:24:00 │    5     0     0   100 │
+│            Support Cross │                        roi │      4 │          0.7 │          80.515 │         0.81 │ 2 days, 14:00:00 │    3     0     1  75.0 │
+│ Below Support 4h pull up │                        roi │      2 │         0.57 │          27.885 │         0.28 │  1 day, 20:00:00 │    2     0     0   100 │
+│      Trending Bull Entry │        Above Resistance 4h │      9 │        -0.03 │         -10.958 │        -0.11 │          5:53:00 │    4     0     5  44.4 │
+│           4h Extreme RSI │ Downtrend Inflection Cross │      1 │        -1.78 │         -50.995 │        -0.51 │  2 days, 8:00:00 │    0     0     1     0 │
+│ Below Support 4h pull up │ Downtrend Inflection Cross │      5 │        -1.19 │        -138.589 │        -1.39 │         20:36:00 │    1     0     4  20.0 │
+│            Support Cross │ Downtrend Inflection Cross │      8 │        -0.87 │        -190.246 │         -1.9 │         13:15:00 │    0     0     8     0 │
+│          Pattern and RSI │ Downtrend Inflection Cross │     12 │        -0.59 │        -198.160 │        -1.98 │         18:25:00 │    2     0    10  16.7 │
+│ Uptrend Inflection Cross │ Downtrend Inflection Cross │     18 │        -0.87 │        -406.781 │        -4.07 │         17:40:00 │    1     0    17   5.6 │
+│           4h Extreme RSI │         Trending Bear Exit │     11 │        -1.32 │        -413.391 │        -4.13 │         14:38:00 │    2     0     9  18.2 │
+│            Support Cross │         Trending Bear Exit │     14 │         -1.3 │        -520.560 │        -5.21 │         16:26:00 │    0     0    14     0 │
+│      Trending Bull Entry │ Downtrend Inflection Cross │     18 │        -1.51 │        -771.855 │        -7.72 │         15:37:00 │    0     0    18     0 │
+│ Uptrend Inflection Cross │         Trending Bear Exit │     26 │        -1.89 │       -1301.101 │       -13.01 │         17:53:00 │    0     0    26     0 │
+│ Below Support 4h pull up │         Trending Bear Exit │     33 │        -1.76 │       -1619.429 │       -16.19 │         10:51:00 │    1     0    32   3.0 │
+│          Pattern and RSI │         Trending Bear Exit │     64 │         -1.2 │       -2062.841 │       -20.63 │         10:36:00 │    4     0    60   6.2 │
+│      Trending Bull Entry │         Trending Bear Exit │     71 │        -2.57 │       -4979.093 │       -49.79 │   1 day, 1:11:00 │    0     0    71     0 │
+│                    TOTAL │                            │    504 │        -0.26 │       -3624.237 │       -36.24 │         19:15:00 │  217     0   287  43.1 │
+└──────────────────────────┴────────────────────────────┴────────┴──────────────┴─────────────────┴──────────────┴──────────────────┴────────────────────────┘
+                                 MONTH BREAKDOWN                                  
+┏━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃      Month ┃ Trades ┃ Tot Profit USDT ┃ Profit Factor ┃  Win  Draw  Loss  Win% ┃
+┡━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ 31/07/2023 │      3 │          -77.68 │           0.0 │    0     0     3     0 │
+│ 31/08/2023 │     13 │        -707.115 │          0.03 │    1     0    12   7.7 │
+│ 30/09/2023 │     12 │         149.364 │          2.12 │    7     0     5  58.3 │
+│ 31/10/2023 │     13 │         209.852 │          3.06 │    8     0     5  61.5 │
+│ 30/11/2023 │     16 │        -106.953 │          0.75 │    9     0     7  56.2 │
+│ 31/12/2023 │     18 │         299.735 │          2.41 │    9     0     9  50.0 │
+│ 31/01/2024 │     18 │        -390.124 │          0.47 │    7     0    11  38.9 │
+│ 29/02/2024 │     12 │         158.113 │           1.7 │    7     0     5  58.3 │
+│ 31/03/2024 │     15 │          16.026 │          1.03 │   11     0     4  73.3 │
+│ 30/04/2024 │     13 │        -513.491 │          0.34 │    5     0     8  38.5 │
+│ 31/05/2024 │     12 │        -225.045 │          0.48 │    5     0     7  41.7 │
+│ 30/06/2024 │     10 │        -208.302 │          0.32 │    3     0     7  30.0 │
+│ 31/07/2024 │     18 │          70.155 │          1.16 │    9     0     9  50.0 │
+│ 31/08/2024 │     12 │        -183.442 │          0.67 │    4     0     8  33.3 │
+│ 30/09/2024 │     11 │        -132.359 │          0.61 │    6     0     5  54.5 │
+│ 31/10/2024 │     15 │         187.645 │           2.0 │    9     0     6  60.0 │
+│ 30/11/2024 │     12 │         167.723 │          1.75 │    6     0     6  50.0 │
+│ 31/12/2024 │     15 │        -559.684 │          0.24 │    3     0    12  20.0 │
+│ 31/01/2025 │     16 │        -151.485 │          0.73 │    9     0     7  56.2 │
+│ 28/02/2025 │     13 │        -237.988 │          0.18 │    3     0    10  23.1 │
+│ 31/03/2025 │     14 │          93.292 │          1.21 │    8     0     6  57.1 │
+│ 30/04/2025 │     14 │         207.272 │          1.74 │    7     0     7  50.0 │
+│ 31/05/2025 │      9 │          33.246 │          1.22 │    5     0     4  55.6 │
+│ 30/06/2025 │     11 │         110.297 │          2.39 │    5     0     6  45.5 │
+│ 31/07/2025 │     18 │         -139.82 │          0.59 │    5     0    13  27.8 │
+│ 31/08/2025 │     15 │        -200.317 │          0.33 │    3     0    12  20.0 │
+│ 30/09/2025 │     15 │         -39.944 │           0.8 │    5     0    10  33.3 │
+│ 31/10/2025 │     20 │        -311.332 │          0.42 │    7     0    13  35.0 │
+│ 30/11/2025 │     16 │        -206.962 │          0.53 │    7     0     9  43.8 │
+│ 31/12/2025 │     14 │        -258.866 │          0.46 │    5     0     9  35.7 │
+│ 31/01/2026 │     19 │        -119.283 │          0.63 │    8     0    11  42.1 │
+│ 28/02/2026 │     13 │        -331.042 │          0.45 │    4     0     9  30.8 │
+│ 31/03/2026 │     10 │         126.425 │           1.7 │    5     0     5  50.0 │
+│ 30/04/2026 │     15 │          61.556 │          1.24 │    9     0     6  60.0 │
+│ 31/05/2026 │     11 │          -7.024 │          0.96 │    6     0     5  54.5 │
+│ 30/06/2026 │     13 │        -457.023 │           0.1 │    2     0    11  15.4 │
+│ 31/07/2026 │     10 │          50.344 │          1.44 │    5     0     5  50.0 │
+└────────────┴────────┴─────────────────┴───────────────┴────────────────────────┘
+                                   SUMMARY METRICS                                    
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Metric                                 ┃ Value                                     ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Backtesting from                       │ 2023-07-21 00:00:00                       │
+│ Backtesting to                         │ 2026-07-21 00:00:00                       │
+│ Trading Mode                           │ Spot                                      │
+│ Max open trades                        │ 1                                         │
+│                                        │                                           │
+│ Total/Daily Avg Trades                 │ 504 / 0.46                                │
+│ Starting balance                       │ 10000 USDT                                │
+│ Final balance                          │ 6375.763 USDT                             │
+│ Absolute profit                        │ -3624.237 USDT                            │
+│ Total profit %                         │ -36.24%                                   │
+│ CAGR %                                 │ -13.92%                                   │
+│ Sharpe (closed trades)                 │ -1.07                                     │
+│ Sortino (closed trades)                │ -1.49                                     │
+│ Calmar (closed trades)                 │ -1.72                                     │
+│ SQN                                    │ -2.74                                     │
+│ Mean profit p-value                    │ 0.006413                                  │
+│ Profit factor                          │ 0.73                                      │
+│ Expectancy (Ratio)                     │ -7.19 (-0.15)                             │
+│ Avg. daily profit                      │ -3.307 USDT                               │
+│ Avg. stake amount                      │ 2724.741 USDT                             │
+│ Market change                          │ 120.40%                                   │
+│ Total trade volume                     │ 2748405.759 USDT                          │
+│                                        │                                           │
+│ Best Pair                              │ BTC/USDT -36.24%                          │
+│ Worst Pair                             │ BTC/USDT -36.24%                          │
+│ Best trade                             │ BTC/USDT 6.30%                            │
+│ Worst trade                            │ BTC/USDT -11.09%                          │
+│ Best day                               │ 189.523 USDT                              │
+│ Worst day                              │ -279.499 USDT                             │
+│ Days win/draw/lose                     │ 201 / 623 / 268                           │
+│ Min/Max/Avg. Duration Winners          │ 0d 01:00 / 2d 08:00 / 0d 21:11            │
+│ Min/Max/Avg. Duration Losers           │ 0d 00:00 / 4d 20:00 / 0d 17:47            │
+│ Max Consecutive Wins / Loss            │ 8 / 12                                    │
+│ Rejected Entry signals                 │ 0                                         │
+│ Entry/Exit Timeouts                    │ 0 / 0                                     │
+│                                        │                                           │
+│ Min/Max balance (closed trades)        │ 6321.318 USDT / 9988.314 USDT             │
+│ Max % of account underwater            │ 36.79%                                    │
+│ Absolute drawdown                      │ 3678.682 USDT (36.79%)                    │
+│ Drawdown duration                      │ 1084 days 16:00:00                        │
+│ Profit at drawdown start               │ 0 USDT                                    │
+│ Profit at drawdown end                 │ -3678.682 USDT                            │
+│ Drawdown start                         │ 2023-07-25 16:00:00                       │
+│ Drawdown end                           │ 2026-07-14 08:00:00                       │
+│                                        │                                           │
+│ Wallet based Metrics                   │                                           │
+│ Min/Max balance (wallet balance)       │ 6321.318 USDT / 10001.81 USDT             │
+│ Min/Max balance dates (wallet balance) │ 2026-07-14 09:00:00 / 2023-07-25 13:00:00 │
+│ Max % of account underwater (balance)  │ 36.80%                                    │
+│ Absolute drawdown (wallet balance)     │ 3680.492 USDT (36.80%)                    │
+│ Drawdown duration                      │ 1084 days 20:00:00                        │
+│ Profit at drawdown start               │ 1.81 USDT                                 │
+│ Profit at drawdown end                 │ -3678.682 USDT                            │
+│ Drawdown start                         │ 2023-07-25 13:00:00                       │
+│ Drawdown end                           │ 2026-07-14 09:00:00                       │
+│ Sharpe (daily wallet balance)          │ -1.62                                     │
+│ Sortino (daily wallet balance)         │ -1.91                                     │
+│ Calmar (daily wallet balance)          │ -1.72                                     │
+└────────────────────────────────────────┴───────────────────────────────────────────┘
+
+Backtested 2023-07-21 00:00:00 -> 2026-07-21 00:00:00 | Max open trades : 1
+                                                          STRATEGY SUMMARY                                                           
+┏━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Strategy ┃ Trades ┃ Avg Profit % ┃ Tot Profit USDT ┃ Tot Profit % ┃ Avg Duration ┃  Win  Draw  Loss  Win% ┃              Drawdown ┃
+┡━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━┩
+│  Candle2 │    504 │        -0.26 │       -3624.237 │       -36.24 │     19:15:00 │  217     0   287  43.1 │ 3678.682 USDT  36.79% │
+└──────────┴────────┴──────────────┴─────────────────┴──────────────┴──────────────┴────────────────────────┴───────────────────────┘

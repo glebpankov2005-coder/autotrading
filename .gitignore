@@ -1,0 +1,8 @@
+.venv/
+rawdata/
+__pycache__/
+*.pyc
+user_data/backtest_results/*.zip
+user_data/backtest_results/.last_result.json
+user_data/logs/
+*.log
