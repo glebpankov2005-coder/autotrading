@@ -8,3 +8,4 @@ user_data/logs/
 *.log
 user_data/backtest_results/*.meta.json
 user_data/backtest_results/full_output.txt
+tourney_results_recent.jsonl

@@ -17,12 +17,12 @@ import zipfile
 SRC = "/tmp/claude-0/-home-user-autotrading/091796be-979d-5f7b-bf9b-03e9d6d4d91f/scratchpad/src_strats"
 WORK = "/tmp/tourney_work"
 RESULTS_DIR = "user_data/backtest_results"
-OUT = "tourney_results.jsonl"
+OUT = "tourney_results_recent.jsonl"
 PY = ".venv/bin/python"
 RUNNER = "run_backtest_2y.py"
-CONFIG = "user_data/config_2y.json"
-DATADIR = "user_data/data_2y/binance"
-TIMERANGE = "20171101-20191101"
+CONFIG = "user_data/config_recent.json"
+DATADIR = "user_data/data_recent/binance"
+TIMERANGE = "20240721-20260721"
 LIST_TIMEOUT = 90
 BT_TIMEOUT = 300
 

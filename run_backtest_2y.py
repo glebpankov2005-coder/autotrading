@@ -32,7 +32,7 @@ def _mkt(base):
     }
 
 
-MARKETS_LIST = [_mkt("BTC"), _mkt("ETH")]
+MARKETS_LIST = [_mkt("BTC"), _mkt("ETH"), _mkt("SOL")]
 
 
 def _patch(cls):
