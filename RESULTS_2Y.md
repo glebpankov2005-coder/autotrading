@@ -82,6 +82,28 @@ Slightly negative on every pair; the few large open-trade losers outweigh many t
 4. **One regime.** 2024-07→2026-07 was a down/choppy market for alts. Rankings can shift in a
    different regime; validate on a held-out range before trusting any of these live.
 
+## Follow-up: cryptotank over 4 years (2022-08-04 → 2026-08-04)
+
+Re-tested the winner on a **4-year** window (30m uploads resampled to 1h), all three pairs.
+Strategy is unchanged, so the earlier bias clearance (lookahead-analysis = No, repaint = clean)
+still holds — this is a real, causal result.
+
+| Metric | cryptotank (4y) |
+|---|---|
+| Total profit | **+70.1%** (CAGR 14.2%) |
+| Sharpe (daily) / Sortino | 0.56 / 0.41 |
+| Profit factor | 1.36 |
+| Max drawdown | 34.4% |
+| Trades / win rate | 247 / 87.9% |
+| Per pair | ETH +38.6% · BTC +19.8% · SOL +11.7% (all positive) |
+| **Buy & hold, same window** | **BTC +175% · ETH +13% · SOL +87% (≈ +92% avg)** |
+
+**Read:** cryptotank is a *defensive, high-win-rate* strategy. Over the last 2 years (a −34%
+market) it strongly beat buy-and-hold (+38% vs −34%). Over 4 years — which includes the big
+2023-2024 bull — it made a solid **+70%** but **trailed simple holding (+92%)**: it protects
+capital in down/choppy regimes and lags a strong bull. `user_data/strategies/cryptotank.py` is
+the standalone strategy file.
+
 ## Reproduce
 
 ```bash
