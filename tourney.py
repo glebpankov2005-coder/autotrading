@@ -31,11 +31,22 @@ os.makedirs(WORK, exist_ok=True)
 
 def sanitize(fn):
     base = os.path.splitext(os.path.basename(fn))[0]
-    return re.sub(r"[^A-Za-z0-9_]", "_", base)
+    s = re.sub(r"[^A-Za-z0-9_]", "_", base)
+    if s and s[0].isdigit():          # valid Python module name (no leading digit)
+        s = "s_" + s
+    return s
 
 
-def detect_classes(strat_dir):
-    """Return (classes, err). Uses freqtrade list-strategies (authoritative)."""
+def defined_classes(pyfile):
+    """Class names literally defined in the target file (regex over source)."""
+    txt = open(pyfile, encoding="utf-8", errors="replace").read()
+    return set(re.findall(r"^class\s+(\w+)\s*[\(:]", txt, re.M))
+
+
+def detect_classes(strat_dir, pyfile):
+    """Return (classes, err). A class only counts if freqtrade validates it as an
+    IStrategy subclass AND it is defined in THIS file -- otherwise freqtrade's scan
+    of the default strategies dir (Candle2.py) leaks in as a false positive."""
     try:
         p = subprocess.run(
             [PY, RUNNER, "list-strategies", "--strategy-path", strat_dir, "-1",
@@ -43,19 +54,20 @@ def detect_classes(strat_dir):
             capture_output=True, text=True, timeout=LIST_TIMEOUT)
     except subprocess.TimeoutExpired:
         return [], "list-strategies timeout"
-    names = []
+    valid = []
     for line in p.stdout.splitlines():
         s = line.strip()
         if re.fullmatch(r"[A-Za-z_]\w*", s) and s not in ("LOAD", "FAILED"):
-            names.append(s)
-    # capture a short error hint from stderr if nothing found
-    err = ""
-    if not names:
-        tail = [l for l in p.stderr.splitlines()
-                if any(k in l for k in ("Error", "error", "Exception", "No module",
-                                        "cannot import", "Traceback"))]
-        err = tail[-1][:300] if tail else "no IStrategy class detected"
-    return names, err
+            valid.append(s)
+    own = [n for n in valid if n in defined_classes(pyfile)]
+    if own:
+        return own, ""
+    # nothing from this file loaded -> report why
+    tail = [l for l in p.stderr.splitlines()
+            if any(k in l for k in ("Error", "error", "Exception", "No module",
+                                    "cannot import", "Traceback", "ModuleNotFound"))]
+    return [], (tail[-1].split(" - ")[-1][:300] if tail
+                else "own strategy class failed to load / not an IStrategy")
 
 
 def newest_zip(before):
@@ -132,7 +144,7 @@ def main():
         os.makedirs(d)
         shutil.copy(f, os.path.join(d, name + ".py"))
         t0 = time.time()
-        classes, derr = detect_classes(d)
+        classes, derr = detect_classes(d, os.path.join(d, name + ".py"))
         rec = {"file": os.path.basename(f), "classes": classes}
         if not classes:
             rec.update({"status": "fail", "reason": derr or "no strategy class"})
