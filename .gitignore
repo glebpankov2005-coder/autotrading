@@ -6,3 +6,5 @@ user_data/backtest_results/*.zip
 user_data/backtest_results/.last_result.json
 user_data/logs/
 *.log
+user_data/backtest_results/*.meta.json
+user_data/backtest_results/full_output.txt
