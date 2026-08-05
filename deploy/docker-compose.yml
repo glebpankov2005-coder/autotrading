@@ -1,0 +1,20 @@
+# Docker deploy: cryptotankBal2 dry-run. Survives reboots (restart: unless-stopped).
+# Usage (from repo root):
+#   docker compose -f deploy/docker-compose.yml up -d
+#   docker compose -f deploy/docker-compose.yml logs -f
+#   docker compose -f deploy/docker-compose.yml down
+services:
+  freqtrade-dryrun:
+    image: freqtradeorg/freqtrade:stable
+    container_name: freqtrade-dryrun
+    restart: unless-stopped
+    # mount the repo's user_data (strategies + config + db) into the container
+    volumes:
+      - ../user_data:/freqtrade/user_data
+    # FreqUI: uncomment if you set api_server.enabled=true in the config
+    # ports:
+    #   - "127.0.0.1:8080:8080"
+    command: >
+      trade
+      --config /freqtrade/user_data/config_dryrun.json
+      --strategy cryptotankBal2
