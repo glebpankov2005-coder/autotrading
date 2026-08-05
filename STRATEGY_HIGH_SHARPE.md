@@ -62,3 +62,36 @@ further with a walk-forward and a paper-trade before going live (roadmap Phase 1
 > Caveat: BTC/ETH/SOL only, 1h, and these three periods overlap the 2022–2026 span
 > (one broad market cycle). Different assets or a very different macro regime could
 > shift the numbers; re-validate on fresh data before trusting it with capital.
+
+## Can it hit a 30% annual minimum? (return-ceiling analysis)
+
+Tested whether returns can be pushed to ≥30% CAGR every period.
+
+**Exits are already optimal — no lever there.** `cryptotankMax` (ROI cap raised
+0.10→0.80, partial-profit-take removed) is **byte-identical to the original across
+all 3 periods** — the tiered trailing stop is the binding exit on essentially every
+trade, so ROI/partial-takes never fire. Winners already run to the trailing stop.
+
+**Return is regime-bound (full-exposure CAGR):**
+
+| Period | Regime | CAGR | ≥30%? |
+|---|---|---|---|
+| P1 2022→2023 | bear | −30% | ❌ |
+| P2 2023→2025 | bull | **+61%** | ✅ |
+| P3 2025→2026 | choppy | +17% | ❌ |
+
+Blended over 4 years ≈ **14% CAGR**.
+
+**Conclusion: a long-only spot strategy on BTC/ETH/SOL cannot guarantee 30% every
+year.** Only bull regimes clear it; choppy tops ~17%; bears are negative (the assets
+themselves fell ~50%, and long-only can't print +30% into that without shorting).
+The only ways to force ≥30% across regimes:
+1. **Leverage (2–3× futures)** — hits the average but scales the bear to −60%+
+   (liquidation risk) and drawdown to ~70%; destroys the Sharpe/robustness. Not a
+   real *minimum*.
+2. **Long/short futures** — short the bears instead of sitting them out. The
+   legitimate path to all-regime 30%+, but a bigger, materially riskier build.
+3. **Accept regime-dependent returns** — 30%+ in bulls, protected in bears (Pro).
+
+Recommend treating ~30% as a *target in favorable regimes* (~14% blended), not a
+guaranteed floor — unless you deliberately move to a long/short futures design.
