@@ -10,3 +10,7 @@ user_data/backtest_results/*.meta.json
 user_data/backtest_results/full_output.txt
 signals_*.csv
 user_data/backtest_results/*.zip
+
+# hyperopt transients
+user_data/hyperopt_results/
+user_data/hyperopt.lock
