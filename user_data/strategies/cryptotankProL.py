@@ -9,10 +9,10 @@ from freqtrade.strategy import (BooleanParameter, CategoricalParameter, DecimalP
 import freqtrade.vendor.qtpylib.indicators as qtpylib
 from freqtrade.persistence import Trade
 
-class cryptotankLS(IStrategy):
+class cryptotankProL(IStrategy):
 
     use_custom_stoploss = True
-    can_short = True
+    can_short = False
     trailing_stop = True
     ignore_roi_if_entry_signal = True
     use_exit_signal = True
@@ -82,6 +82,9 @@ class cryptotankLS(IStrategy):
                 "stop_duration_candles": self.stop_duration.value,
                 "only_per_pair": True
             })
+        prot.append({
+            "method": "MaxDrawdown", "lookback_period_candles": 336,
+            "trade_limit": 10, "stop_duration_candles": 48, "max_allowed_drawdown": 0.20})
 
         return prot
         
@@ -92,7 +95,7 @@ class cryptotankLS(IStrategy):
 
     def leverage(self, pair, current_time, current_rate, proposed_leverage, max_leverage,
                  entry_tag, side, **kwargs) -> float:
-        return min(2.0, max_leverage)
+        return min(3.0, max_leverage)
 
 
    # This is called when placing the initial order (opening trade)
@@ -225,9 +228,9 @@ class cryptotankLS(IStrategy):
         dataframe['avg_slope_min'] = dataframe['smooth_ma_slope'].shift(self.shift.value).rolling(self.avg.value).min()
         dataframe['avg_slope_max'] = dataframe['smooth_ma_slope'].shift(self.shift.value).rolling(self.avg.value).max()
         dataframe['avg_slope_mean'] = dataframe['avg_slope_max'] + (dataframe['avg_slope_min'])
+        # regime filter: 100-EMA and whether it is rising
         dataframe['ema_regime'] = ta.EMA(dataframe, timeperiod=100)
         dataframe['regime_up'] = (dataframe['close'] > dataframe['ema_regime']) & (dataframe['ema_regime'] > dataframe['ema_regime'].shift(48))
-        dataframe['regime_down'] = (dataframe['close'] < dataframe['ema_regime']) & (dataframe['ema_regime'] < dataframe['ema_regime'].shift(48))
 
         return dataframe
 
@@ -256,18 +259,13 @@ class cryptotankLS(IStrategy):
 
         df.loc[
             (
+                # (qtpylib.crossed_above(df['change'], df[f'smooth_change_{self.smoothing_length.value}'])) &
                 (df['min'] < self.buy_ma_slope.value) &
-                (df['regime_up']) &
+                (df['regime_up']) &   # NEW: only buy dips in a rising-100EMA uptrend
                 (df['volume'] > 0)
             ),
-            ['enter_long', 'enter_tag']] = (1, 'LONG dip')
-        df.loc[
-            (
-                (df['max'] > self.sell_ma_slope.value) &
-                (df['regime_down']) &
-                (df['volume'] > 0)
-            ),
-            ['enter_short', 'enter_tag']] = (1, 'SHORT rip')
+            ['enter_long', 'enter_tag']] = (1, 'SLOPE')
+
 
         return df
 
@@ -300,11 +298,11 @@ class cryptotankLS(IStrategy):
         #         'exit_long'] = 1
 
         df.loc[
-            ((df['max'] > self.sell_ma_slope.value) & (df['volume'] > 0)),
-            ['exit_long', 'exit_tag']] = (1, 'exit long')
-        df.loc[
-            ((df['min'] < self.buy_ma_slope.value) & (df['volume'] > 0)),
-            ['exit_short', 'exit_tag']] = (1, 'exit short')
+            (
+                (df['max'] > self.sell_ma_slope.value) &
+                (df['volume'] > 0)  # Make sure Volume is not 0
+            ),
+            ['exit_long', 'exit_tag']] = (1, 'SLOPE SELL')
         return df
 
 
