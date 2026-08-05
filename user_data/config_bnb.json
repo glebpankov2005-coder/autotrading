@@ -9,7 +9,7 @@
     "timeframe": "1h",
     "trading_mode": "spot",
     "margin_mode": "",
-    "datadir": "user_data/data_recent/binance",
+    "datadir": "user_data/data_bnb/binance",
     "unfilledtimeout": {
         "entry": 10,
         "exit": 10,
@@ -35,9 +35,7 @@
         "key": "",
         "secret": "",
         "pair_whitelist": [
-            "BTC/USDT",
-            "ETH/USDT",
-            "SOL/USDT"
+            "BNB/USDT"
         ],
         "pair_blacklist": []
     },

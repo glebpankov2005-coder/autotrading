@@ -46,5 +46,6 @@
     "dataformat_ohlcv": "feather",
     "internals": {
         "process_throttle_secs": 5
-    }
+    },
+    "strategy": "cryptotankBal2"
 }
