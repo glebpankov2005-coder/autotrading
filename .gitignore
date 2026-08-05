@@ -1,16 +1,13 @@
+# python / venv
 .venv/
-rawdata/
 __pycache__/
 *.pyc
-user_data/backtest_results/*.zip
-user_data/backtest_results/.last_result.json
-user_data/logs/
-*.log
-user_data/backtest_results/*.meta.json
-user_data/backtest_results/full_output.txt
-signals_*.csv
-user_data/backtest_results/*.zip
 
-# hyperopt transients
+# raw source data (rebuildable via download_data.sh + convert_data.py)
+rawdata/
+
+# freqtrade run artifacts
+user_data/backtest_results/
 user_data/hyperopt_results/
-user_data/hyperopt.lock
+user_data/notebooks/
+*.log
