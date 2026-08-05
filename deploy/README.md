@@ -48,3 +48,22 @@ crontab -e
 - If you enabled Telegram, `/status` and `/profit` in your bot chat report live state.
 
 See `docs/DRYRUN.md` for what to monitor over the 4–8 week paper-trading window.
+
+## Watchdog — get pinged if the bot dies or drawdown spikes
+
+`deploy/healthcheck.py` is an external safety net: freqtrade's own Telegram alerts can't
+fire if the process is dead, so this checks liveness independently (systemd → docker →
+pgrep) and also alerts on a realized-drawdown breach. Alerts are de-duplicated.
+
+```bash
+# 1) point it at your Telegram bot (or set telegram creds in config_dryrun.json)
+export TG_TOKEN=123456:abc...   TG_CHAT=987654321
+# optional: MONITOR_DD_PCT=15  MONITOR_WALLET=1000  MONITOR_UNIT=freqtrade-dryrun
+
+# 2) run every 5 minutes via cron
+crontab -e
+*/5 * * * * TG_TOKEN=... TG_CHAT=... /opt/autotrading/.venv/bin/python /opt/autotrading/deploy/healthcheck.py >> /opt/autotrading/user_data/monitor.log 2>&1
+```
+
+It sends: 🔴 when the bot goes down, 🟢 when it recovers, ⚠️ when drawdown ≥ threshold
+(default 15%). With no Telegram configured it just prints the alert (visible in the log).
