@@ -4,10 +4,10 @@ Two ways to keep `Apex`'s dry-run alive on a VPS. Pick one.
 
 ## Option A — systemd (plain Linux VPS)
 
-Assumes the repo is at `/opt/autotrading` with a `.venv` (see `docs/DRYRUN.md` install).
+Assumes the repo is at `/opt/apex-trading-bot` with a `.venv` (see `docs/DRYRUN.md` install).
 
 ```bash
-# adjust User= and the /opt/autotrading paths in the unit if your install differs
+# adjust User= and the /opt/apex-trading-bot paths in the unit if your install differs
 sudo cp deploy/freqtrade-dryrun.service /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable --now freqtrade-dryrun     # start now + on every boot
@@ -36,7 +36,7 @@ into the container, so strategies, config, and the sqlite trade DB persist on th
 ```bash
 # hourly snapshots of user_data/dryrun.sqlite (keeps last 48)
 crontab -e
-0 * * * * /opt/autotrading/deploy/backup_db.sh
+0 * * * * /opt/apex-trading-bot/deploy/backup_db.sh
 ```
 
 ## Sanity checks
@@ -62,7 +62,7 @@ export TG_TOKEN=123456:abc...   TG_CHAT=987654321
 
 # 2) run every 5 minutes via cron
 crontab -e
-*/5 * * * * TG_TOKEN=... TG_CHAT=... /opt/autotrading/.venv/bin/python /opt/autotrading/deploy/healthcheck.py >> /opt/autotrading/user_data/monitor.log 2>&1
+*/5 * * * * TG_TOKEN=... TG_CHAT=... /opt/apex-trading-bot/.venv/bin/python /opt/apex-trading-bot/deploy/healthcheck.py >> /opt/apex-trading-bot/user_data/monitor.log 2>&1
 ```
 
 It sends: 🔴 when the bot goes down, 🟢 when it recovers, ⚠️ when drawdown ≥ threshold

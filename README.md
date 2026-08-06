@@ -1,4 +1,4 @@
-# autotrading — Apex
+# Apex — Freqtrade crypto trading bot
 
 A Freqtrade crypto trading strategy for **BTC / ETH / SOL** on the 1-hour timeframe,
 long-only spot. The headline strategy, **`Apex`** (formerly `cryptotankBal2`), is a regime-aware

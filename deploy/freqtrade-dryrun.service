@@ -1,7 +1,7 @@
 # systemd service: Apex dry-run, auto-restart + start on boot.
 # Install:
 #   sudo cp deploy/freqtrade-dryrun.service /etc/systemd/system/
-#   (edit User= and the two /opt/autotrading paths to match your install)
+#   (edit User= and the two /opt/apex-trading-bot paths to match your install)
 #   sudo systemctl daemon-reload
 #   sudo systemctl enable --now freqtrade-dryrun
 #   journalctl -u freqtrade-dryrun -f      # live logs
@@ -13,8 +13,8 @@ Wants=network-online.target
 [Service]
 Type=simple
 User=freqtrade
-WorkingDirectory=/opt/autotrading
-ExecStart=/opt/autotrading/.venv/bin/freqtrade trade --config user_data/config_dryrun.json
+WorkingDirectory=/opt/apex-trading-bot
+ExecStart=/opt/apex-trading-bot/.venv/bin/freqtrade trade --config user_data/config_dryrun.json
 Restart=always
 RestartSec=15
 # keep logs bounded via journald; rotate the sqlite DB backups separately

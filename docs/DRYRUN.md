@@ -10,7 +10,7 @@ and data issues a backtest can't. Run it for **4–8 weeks** on an always-on mac
 ## 1. Install
 
 ```bash
-git clone <this repo> && cd autotrading
+git clone <this repo> && cd apex-trading-bot
 python -m venv .venv && . .venv/bin/activate
 pip install -r requirements.txt          # installs freqtrade
 ```
