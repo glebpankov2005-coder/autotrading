@@ -24,7 +24,23 @@ sudo -u "$RUN_USER" "$REPO_DIR/.venv/bin/freqtrade" backtesting \
   --datadir "$REPO_DIR/user_data/data" --timerange 20250101- --timeframe 1h \
   2>/dev/null | grep -E "Total profit %|CAGR|Sharpe" || echo "   (backtest summary above; continue)"
 
-echo ">> [4/5] Installing systemd service…"
+echo ">> [4/6] Generating API-server secrets…"
+sudo -u "$RUN_USER" "$REPO_DIR/.venv/bin/python" - "$REPO_DIR/user_data/config_dryrun.json" <<'PY'
+import json, secrets, sys
+f = sys.argv[1]
+c = json.load(open(f))
+api = c.setdefault("api_server", {})
+if str(api.get("jwt_secret_key", "")).startswith("CHANGE_ME"):
+    api["jwt_secret_key"] = secrets.token_hex(32)
+if str(api.get("ws_token", "")).startswith("CHANGE_ME"):
+    api["ws_token"] = secrets.token_hex(16)
+if str(api.get("password", "")).startswith("CHANGE_ME"):
+    api["password"] = secrets.token_urlsafe(16)
+json.dump(c, open(f, "w"), indent=4)
+print("   secrets generated")
+PY
+
+echo ">> [5/6] Installing systemd service…"
 cat > /etc/systemd/system/apex-dryrun.service <<UNIT
 [Unit]
 Description=Apex dry-run (Freqtrade paper trading)
@@ -43,7 +59,7 @@ RestartSec=15
 WantedBy=multi-user.target
 UNIT
 
-echo ">> [5/5] Starting the bot…"
+echo ">> [6/6] Starting the bot…"
 systemctl daemon-reload
 systemctl enable --now apex-dryrun
 
