@@ -16,3 +16,7 @@ deploy/.monitor_state.json
 user_data/data_fut2/
 *_result*.json
 uploaded_results.json
+user_data/data_5m/
+user_data/data_15m/
+native_results.json
+notank_result.json
