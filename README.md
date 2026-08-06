@@ -1,7 +1,7 @@
-# autotrading — cryptotankBal2
+# autotrading — Apex
 
 A Freqtrade crypto trading strategy for **BTC / ETH / SOL** on the 1-hour timeframe,
-long-only spot. The headline strategy, **`cryptotankBal2`**, is a regime-aware
+long-only spot. The headline strategy, **`Apex`** (formerly `cryptotankBal2`), is a regime-aware
 dip-buyer with a tiered trailing-stop exit, validated across multiple independent
 market periods.
 
@@ -11,7 +11,7 @@ market periods.
 
 ---
 
-## The strategy: `cryptotankBal2`
+## The strategy: `Apex`
 
 It combines three ideas, each earning its place empirically (see `docs/STRATEGY.md`):
 
@@ -44,9 +44,9 @@ run_backtest.py                Offline Freqtrade runner (stubs exchange metadata
 convert_data.py                Build feathers from raw source data
 download_data.sh               Fetch raw source data
 user_data/
-  config.json                  Canonical config: BTC/ETH/SOL, cryptotankBal2, spot 1h
+  config.json                  Canonical config: BTC/ETH/SOL, Apex, spot 1h
   strategies/
-    cryptotankBal2.py          the strategy (default)
+    Apex.py          the strategy (default)
     cryptotankPro.py           defensive high-Sharpe variant (lower return, ~0 drawdown)
     cryptotank.py              the original baseline (reference)
   data/binance/                BTC/ETH/SOL 1h + 4h OHLCV feathers
@@ -62,7 +62,7 @@ archive/                       Full research history (experiments, variants, fin
 python -m venv .venv && . .venv/bin/activate
 pip install -r requirements.txt
 
-# Backtest cryptotankBal2 on BTC/ETH/SOL, last 4 years
+# Backtest Apex on BTC/ETH/SOL, last 4 years
 python run_backtest.py backtesting --config user_data/config.json \
   --timerange 20220805-20260805 --timeframe 1h --cache none
 ```
@@ -72,7 +72,7 @@ OHLCV data, indicators, entries/exits and accounting are 100% real Freqtrade.
 
 ## How this strategy was chosen
 
-`cryptotankBal2` is the result of an extensive, documented research process — a
+`Apex` is the result of an extensive, documented research process — a
 108-strategy tournament, lookahead-bias filtering, hyperopt with out-of-sample
 validation, a long/short futures experiment, leverage tests, and a Vibe-Trading
 integration. The short version:

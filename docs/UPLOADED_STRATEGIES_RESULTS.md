@@ -9,7 +9,7 @@ strategies were backtested in **futures mode, 1h, BTC/ETH/SOL, 2024-08 → 2026-
 | AlexBandSniper (V65513) | 15m | −21.1% | −11.2% | −0.15 | 68.1% | 0.95 | 388 | 78.4% | market orders (`price_side=other`) |
 | AlexNexusForge (V8AIV7) | 1h | −68.7% | −44.0% | −2.01 | 72.6% | 0.75 | 876 | 81.8% | — |
 | FFTAdaptiveCycle | 5m | −82.7% | −58.4% | −0.13 | 95.8% | 0.75 | 260 | 93.1% | — |
-| cryptotankBal2 (reference) | 1h | +60.2% | +26.6% | +1.53 | ~0% | — | — | — | spot |
+| Apex (reference) | 1h | +60.2% | +26.6% | +1.53 | ~0% | — | — | — | spot |
 
 ## Caveats
 - **Data**: only 1h is reachable here (exchange APIs blocked). ECRV32/FFT (5m) and
@@ -44,13 +44,13 @@ timeframe**, futures, BTC/ETH/SOL, common **~1-year window (2025-07 → 2026-08)
 | NoTankAi_19_2 | 15m | −52.0% | −50.1% | −1.48 | 62.3% | 0.79 | 344 | 73.8% |
 | ECRV32 | 5m | −56.8% | −54.9% | −6.08 | 58.6% | 0.76 | 1774 | 75.4% |
 | FFTAdaptiveCycle | 5m | −84.7% | −83.1% | −0.22 | 94.9% | 0.71 | 226 | 96.9% |
-| cryptotankBal2 (reference) | 1h spot | +60.2% | +26.6% | +1.53 | ~0% | — | — | — |
+| Apex (reference) | 1h spot | +60.2% | +26.6% | +1.53 | ~0% | — | — | — |
 
 **Verdict: the timeframe was not hiding good performance.** Tested at their designed
 resolution, all five uploaded strategies lose −21% to −85% with 46–95% drawdowns despite
 74–97% win rates — a few big leveraged losses erase many small wins. ECRV32 was actually
 *worse* at native 5m (−56.8%) than at 1h (+1.7%); FFTAdaptiveCycle stayed catastrophic
-(−84.7% / 95% DD) even at 5m. None approaches cryptotankBal2.
+(−84.7% / 95% DD) even at 5m. None approaches Apex.
 
-(Note: the uploaded strategies' window is ~1y, limited by 5m data depth; the cryptotankBal2
+(Note: the uploaded strategies' window is ~1y, limited by 5m data depth; the Apex
 reference is its recent-2y figure. Windows differ slightly but the gap is overwhelming.)

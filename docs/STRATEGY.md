@@ -1,4 +1,4 @@
-# cryptotankBal2 — strategy specification & validation
+# Apex — strategy specification & validation
 
 Long-only spot, 1h, BTC/ETH/SOL. Built on the proven `cryptotank` engine with two
 principled additions. Parameters are fixed/sensible (not fit to the validation
@@ -50,7 +50,7 @@ near-zero drawdown. A **sustained bear** is the one regime it can't beat long-on
 
 ## Variants (in the repo)
 
-- **`cryptotankBal2`** — default. Best return/robustness balance.
+- **`Apex`** — default. Best return/robustness balance.
 - **`cryptotankPro`** — more defensive: ~0 drawdown every regime, lower return. Use if you
   value capital protection over return.
 - **`cryptotank`** — the original baseline (no regime filter): higher raw bull return but

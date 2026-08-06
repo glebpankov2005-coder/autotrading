@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Lightweight watchdog for the cryptotankBal2 dry-run.
+"""Lightweight watchdog for the Apex dry-run.
 
 Run from cron every ~5-10 min. Alerts (Telegram) when:
   * the bot process is DOWN  (its own Telegram can't warn you if it's dead)
@@ -112,16 +112,16 @@ def main():
     alive = is_alive()
 
     if not alive and not st["down"]:
-        telegram("🔴 cryptotankBal2 dry-run is DOWN — process not running.")
+        telegram("🔴 Apex dry-run is DOWN — process not running.")
         st["down"] = True
     elif alive and st["down"]:
-        telegram("🟢 cryptotankBal2 dry-run RECOVERED — process is running again.")
+        telegram("🟢 Apex dry-run RECOVERED — process is running again.")
         st["down"] = False
 
     dd = realized_drawdown_pct()
     if dd is not None:
         if dd >= DD_LIMIT and not st["dd_alerted"]:
-            telegram(f"⚠️ cryptotankBal2 drawdown {dd}% ≥ {DD_LIMIT}% threshold.")
+            telegram(f"⚠️ Apex drawdown {dd}% ≥ {DD_LIMIT}% threshold.")
             st["dd_alerted"] = True
         elif dd < DD_LIMIT * 0.7:
             st["dd_alerted"] = False  # reset once it recovers well below the line

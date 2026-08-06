@@ -1,4 +1,4 @@
-# Dry-run (paper trading) — cryptotankBal2
+# Dry-run (paper trading) — Apex
 
 Dry-run runs the strategy against **live Binance data** and simulates orders with **no
 real money**. It's the make-or-break step before going live: it catches slippage, fills,
@@ -45,13 +45,13 @@ freqtrade trade --config user_data/config_dryrun.json
 ```
 
 It starts paper-trading immediately (`dry_run: true`, 1000 USDT paper wallet, BTC/ETH/SOL,
-`cryptotankBal2`). Trades are logged to `user_data/dryrun.sqlite`. Leave it running 24/7.
+`Apex`). Trades are logged to `user_data/dryrun.sqlite`. Leave it running 24/7.
 
 ## 5. What to watch over the weeks
 
 - **Do live signals/fills match the backtest** over the same dates? Big divergence =
   slippage or data problems to fix before live.
-- **Trade frequency** — cryptotankBal2 is patient (dips only); quiet stretches are normal.
+- **Trade frequency** — Apex is patient (dips only); quiet stretches are normal.
 - **Drawdown** — the MaxDrawdown protection pauses new entries after a 20% account
   drawdown; confirm it behaves as expected.
 - Keep the process alive (systemd / Docker restart policy) and back up the sqlite DB.

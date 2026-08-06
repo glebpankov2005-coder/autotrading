@@ -1,5 +1,5 @@
 {
-    "$comment": "DRY-RUN (paper trading) config for cryptotankBal2. Runs against LIVE Binance data with NO real orders. Launch with: freqtrade trade --config user_data/config_dryrun.json",
+    "$comment": "DRY-RUN (paper trading) config for Apex. Runs against LIVE Binance data with NO real orders. Launch with: freqtrade trade --config user_data/config_dryrun.json",
     "max_open_trades": 3,
     "stake_currency": "USDT",
     "stake_amount": "unlimited",
@@ -11,7 +11,7 @@
     "timeframe": "1h",
     "trading_mode": "spot",
     "margin_mode": "",
-    "strategy": "cryptotankBal2",
+    "strategy": "Apex",
     "unfilledtimeout": {"entry": 10, "exit": 10, "unit": "minutes"},
     "entry_pricing": {
         "price_side": "same",

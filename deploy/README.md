@@ -1,6 +1,6 @@
 # Deploy — run the dry-run 24/7 (auto-restart + survive reboots)
 
-Two ways to keep `cryptotankBal2`'s dry-run alive on a VPS. Pick one.
+Two ways to keep `Apex`'s dry-run alive on a VPS. Pick one.
 
 ## Option A — systemd (plain Linux VPS)
 

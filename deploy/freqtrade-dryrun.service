@@ -1,4 +1,4 @@
-# systemd service: cryptotankBal2 dry-run, auto-restart + start on boot.
+# systemd service: Apex dry-run, auto-restart + start on boot.
 # Install:
 #   sudo cp deploy/freqtrade-dryrun.service /etc/systemd/system/
 #   (edit User= and the two /opt/autotrading paths to match your install)
@@ -6,7 +6,7 @@
 #   sudo systemctl enable --now freqtrade-dryrun
 #   journalctl -u freqtrade-dryrun -f      # live logs
 [Unit]
-Description=Freqtrade dry-run (cryptotankBal2)
+Description=Freqtrade dry-run (Apex)
 After=network-online.target
 Wants=network-online.target
 

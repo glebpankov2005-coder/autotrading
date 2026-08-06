@@ -1,4 +1,4 @@
-# Docker deploy: cryptotankBal2 dry-run. Survives reboots (restart: unless-stopped).
+# Docker deploy: Apex dry-run. Survives reboots (restart: unless-stopped).
 # Usage (from repo root):
 #   docker compose -f deploy/docker-compose.yml up -d
 #   docker compose -f deploy/docker-compose.yml logs -f
@@ -17,4 +17,4 @@ services:
     command: >
       trade
       --config /freqtrade/user_data/config_dryrun.json
-      --strategy cryptotankBal2
+      --strategy Apex

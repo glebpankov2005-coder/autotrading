@@ -1,3 +1,4 @@
+# Apex strategy (formerly cryptotankBal2) — regime-aware dip-buyer with trailing-stop exit. See docs/STRATEGY.md
 from pandas import DataFrame
 from datetime import datetime, timezone
 from typing import Optional
@@ -9,7 +10,7 @@ from freqtrade.strategy import (BooleanParameter, CategoricalParameter, DecimalP
 import freqtrade.vendor.qtpylib.indicators as qtpylib
 from freqtrade.persistence import Trade
 
-class cryptotankBal2(IStrategy):
+class Apex(IStrategy):
 
     use_custom_stoploss = True
     trailing_stop = True
