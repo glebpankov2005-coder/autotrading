@@ -31,3 +31,26 @@ python run_backtest_fut.py backtesting --config user_data/config_upload_market.j
   --strategy AlexBandSniperV65513 --strategy-path user_data/strategies_uploaded \
   --datadir user_data/data_fut2/binance --timerange 20240805-20260805 --timeframe 1h --cache none
 ```
+
+## Native-timeframe retest (the fair test)
+
+After 5m/15m data was provided, each strategy was re-backtested at its **native
+timeframe**, futures, BTC/ETH/SOL, common **~1-year window (2025-07 → 2026-08)**.
+
+| Strategy | Native TF | Return | CAGR | Sharpe | Max DD | PF | Trades | Win% |
+|---|---|---|---|---|---|---|---|---|
+| AlexBandSniper (V65513) | 15m | −21.4% | −20.4% | −0.36 | 46.3% | 0.93 | 310 | 81.6% |
+| AlexNexusForge (V8AIV7) | 1h | −45.9% | −44.2% | −2.09 | 53.1% | 0.74 | 456 | 81.6% |
+| NoTankAi_19_2 | 15m | −52.0% | −50.1% | −1.48 | 62.3% | 0.79 | 344 | 73.8% |
+| ECRV32 | 5m | −56.8% | −54.9% | −6.08 | 58.6% | 0.76 | 1774 | 75.4% |
+| FFTAdaptiveCycle | 5m | −84.7% | −83.1% | −0.22 | 94.9% | 0.71 | 226 | 96.9% |
+| cryptotankBal2 (reference) | 1h spot | +60.2% | +26.6% | +1.53 | ~0% | — | — | — |
+
+**Verdict: the timeframe was not hiding good performance.** Tested at their designed
+resolution, all five uploaded strategies lose −21% to −85% with 46–95% drawdowns despite
+74–97% win rates — a few big leveraged losses erase many small wins. ECRV32 was actually
+*worse* at native 5m (−56.8%) than at 1h (+1.7%); FFTAdaptiveCycle stayed catastrophic
+(−84.7% / 95% DD) even at 5m. None approaches cryptotankBal2.
+
+(Note: the uploaded strategies' window is ~1y, limited by 5m data depth; the cryptotankBal2
+reference is its recent-2y figure. Windows differ slightly but the gap is overwhelming.)
