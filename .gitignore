@@ -13,3 +13,6 @@ user_data/notebooks/
 *.log
 user_data/*.sqlite*
 deploy/.monitor_state.json
+user_data/data_fut2/
+*_result*.json
+uploaded_results.json
