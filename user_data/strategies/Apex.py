@@ -27,8 +27,11 @@ class Apex(IStrategy):
     stoploss = -0.25
     timeframe = '1h'
 
-    # Number of candles the strategy requires before producing valid signals
-    startup_candle_count: int = 30 
+    # Number of candles the strategy requires before producing valid signals.
+    # Must cover the 200-period reference MA / EMA (and the 72-candle deep-bear
+    # shift ≈ 272). Set well above that so live/dry-run pre-loads enough warmup
+    # candles — otherwise the 200-MAs are NaN and NO entry can ever fire live.
+    startup_candle_count: int = 400
 
     ### HYPER-OPT PARAMETERS ###
 
