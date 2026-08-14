@@ -70,6 +70,28 @@ Note: divergence strategies usually *repaint* and look amazing; this one looks t
 suggests the author's own "removed lookahead" patches worked — and the honest version has no
 edge. None of this touched the live Apex bot.
 
+### ANF_v2 — Adaptive Nexus Forge v2 (rejected 2026-08) — 1h futures, leverage, long/short
+
+AlexNexusForge V8 + an HMM regime layer (Gaussian HMM on a BTC anchor modulating leverage/risk)
+and an sklearn ML ensemble + Wavelet/FFT/Murrey-Math tiers. 6,388 lines. Tested on 1h Bybit
+futures, BTC/ETH/SOL, **2025-08 → 2026-08** (1y).
+
+| Metric | Value |
+|---|---|
+| Return | **−85.0%** |
+| Max DD | 85.0% (near-total wipeout) |
+| Sharpe | −12.81 |
+| Win% | 12.7% |
+| Trades | 979 |
+
+**Verdict: reject.** By the author's own design, **ML and HMM are disabled in backtest** (to
+avoid look-ahead), so a backtest measures only the technical-tier "floor" — and that floor loses
+**−85%**, worse than the base ANF V8 (−46%). The claimed edge (ML/HMM) is *unbacktestable and
+unfalsifiable*: believing the strategy works means believing an unmeasurable ML layer turns an
+−85% measured floor into profit, provable only by months of live dry-run. Careful engineering
+(atomic writes, sha256, graceful degradation) atop a losing hull. Fourth "Alex"-family strategy
+tested, fourth loser, each worse than the last (−21% → −46% → −64% → −85%). Live Apex untouched.
+
 **Verdict: the timeframe was not hiding good performance.** Tested at their designed
 resolution, all five uploaded strategies lose −21% to −85% with 46–95% drawdowns despite
 74–97% win rates — a few big leveraged losses erase many small wins. ECRV32 was actually
