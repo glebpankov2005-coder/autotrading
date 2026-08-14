@@ -46,6 +46,30 @@ timeframe**, futures, BTC/ETH/SOL, common **~1-year window (2025-07 → 2026-08)
 | FFTAdaptiveCycle | 5m | −84.7% | −83.1% | −0.22 | 94.9% | 0.71 | 226 | 96.9% |
 | Apex (reference) | 1h spot | +60.2% | +26.6% | +1.53 | ~0% | — | — | — |
 
+### Alex_DivergenceV6 (rejected 2026-08) — 15m futures, 5× leverage, long/short
+
+Momentum-divergence scalper (RSI/MACD/CCI/etc. divergence + Keltner/Bollinger). Tested on
+real **Bybit 15m futures** data, BTC/USDT:USDT, **2025-01 → 2025-07** (6 months; single pair
+because the O(n²) divergence finder OOM-kills a 4 GB VPS on the full universe).
+
+| Metric | Value |
+|---|---|
+| Return | **−64.3%** |
+| CAGR | −87.5% |
+| Sharpe | −23.9 (closed) / −7.6 (daily) |
+| Max DD | 64.6% |
+| PF | 0.71 |
+| Trades | 2,029 (~11/day, 14-min avg hold) |
+| Win% | 32.1% |
+
+**Verdict: reject.** Lost −64% while **BTC rose +14.6%** over the same window — a broken
+strategy, not a regime victim. A hyperactive leverage-scalper: ~$44.8M of trade volume on a
+$10k account ⇒ **~$27k in fees alone** (≈3× the account). Longs −72.7%, shorts +8.4%. Third
+"Alex" strategy tested, third loser (after AlexBandSniper −21% and AlexNexusForge −46%).
+Note: divergence strategies usually *repaint* and look amazing; this one looks terrible, which
+suggests the author's own "removed lookahead" patches worked — and the honest version has no
+edge. None of this touched the live Apex bot.
+
 **Verdict: the timeframe was not hiding good performance.** Tested at their designed
 resolution, all five uploaded strategies lose −21% to −85% with 46–95% drawdowns despite
 74–97% win rates — a few big leveraged losses erase many small wins. ECRV32 was actually
