@@ -20,3 +20,5 @@ user_data/data_5m/
 user_data/data_15m/
 native_results.json
 notank_result.json
+user_data/data_noise/
+user_data/data_trim/
