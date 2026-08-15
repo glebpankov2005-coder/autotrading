@@ -15,6 +15,10 @@ from Apex import Apex
 
 
 class Apex_Robust(Apex):
+    # regime-filter parameters (swept for overfitting robustness)
+    regime_sma_len = 200
+    regime_rise_win = 48
+
     def informative_pairs(self):
         return [("BTC/USDT", self.timeframe)]
 
@@ -26,15 +30,15 @@ class Apex_Robust(Apex):
                 btc = self.dp.get_pair_dataframe("BTC/USDT", self.timeframe)
                 if btc is not None and len(btc) > 0:
                     b = btc[["date", "close"]].copy()
-                    b["btc_sma200"] = ta.SMA(b["close"], timeperiod=200)
+                    b["btc_sma200"] = ta.SMA(b["close"], timeperiod=self.regime_sma_len)
                     # macro uptrend = 200-SMA rising over ~2 days (lookahead-safe)
-                    b["btc_riskon"] = (b["btc_sma200"] > b["btc_sma200"].shift(48)).shift(1)
+                    b["btc_riskon"] = (b["btc_sma200"] > b["btc_sma200"].shift(self.regime_rise_win)).shift(1)
                     m = pd.merge(dataframe[["date"]], b[["date", "btc_riskon"]], on="date", how="left")
                     riskon = m["btc_riskon"].ffill().fillna(False).values
             except Exception:
                 riskon = None
         if riskon is None:  # fallback: coin's own uptrend (correlated proxy for market tide)
-            riskon = (dataframe["ema200"] > dataframe["ema200"].shift(48)).values
+            riskon = (dataframe["ema200"] > dataframe["ema200"].shift(self.regime_rise_win)).values
         dataframe["regime_riskon"] = riskon
         return dataframe
 
