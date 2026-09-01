@@ -10,7 +10,7 @@ backtested offline (in the sandbox or anywhere). Same pattern as the crypto data
 
 ## Files
 - `run_backtest_stocks.py` — offline runner; stubs equities as `TICKER/USD` spot (no network).
-- `tools/fetch_stocks.py` — fetches daily OHLCV from **Stooq** (free, no key) → feathers.
+- `tools/fetch_stocks.py` — fetches daily OHLCV via **yfinance** (Yahoo) → feathers.
 - `user_data/config_stocks.json` — basket config (AAPL, MSFT, NVDA, AMZN, GOOGL, META, TSLA,
   SPY, QQQ), daily, spot, USD.
 - `user_data/strategies/StockExample.py` — Connors **RSI-2** mean-reversion (a real edge on
