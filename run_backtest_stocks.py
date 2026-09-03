@@ -14,7 +14,7 @@ import ccxt
 import ccxt.async_support as ccxt_async
 
 # Edit this list to match the tickers you fetched.
-TICKERS = ["AAPL", "MSFT", "NVDA", "AMZN", "GOOGL", "META", "TSLA", "SPY", "QQQ"]
+TICKERS = ["AAPL", "MSFT", "AMZN", "GOOGL", "META", "TSLA", "SPY", "QQQ"]
 
 
 def _mkt(base):

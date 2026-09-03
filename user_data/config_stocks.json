@@ -19,7 +19,7 @@
         "ccxt_config": {"enableRateLimit": true},
         "ccxt_async_config": {"enableRateLimit": true},
         "pair_whitelist": [
-            "AAPL/USD", "MSFT/USD", "NVDA/USD", "AMZN/USD", "GOOGL/USD",
+            "AAPL/USD", "MSFT/USD", "AMZN/USD", "GOOGL/USD",
             "META/USD", "TSLA/USD", "SPY/USD", "QQQ/USD"
         ],
         "pair_blacklist": []

@@ -16,7 +16,7 @@ import sys
 import pandas as pd
 import yfinance as yf
 
-TICKERS = sys.argv[1:] or ["AAPL", "MSFT", "NVDA", "AMZN", "GOOGL", "META", "TSLA", "SPY", "QQQ"]
+TICKERS = sys.argv[1:] or ["AAPL", "MSFT", "AMZN", "GOOGL", "META", "TSLA", "SPY", "QQQ"]
 OUT = "user_data/data_stocks/kraken"
 os.makedirs(OUT, exist_ok=True)
 
