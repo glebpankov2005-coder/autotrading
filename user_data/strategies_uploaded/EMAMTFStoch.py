@@ -27,7 +27,7 @@ class EMAMTFStoch(IStrategy):
     use_custom_stoploss = True
     use_exit_signal = True
     process_only_new_candles = True
-    startup_candle_count: int = 120
+    startup_candle_count: int = 250
 
     # source defaults
     ema_fast, ema_slow = 38, 62
@@ -41,7 +41,9 @@ class EMAMTFStoch(IStrategy):
     trail_atr_mult = 1.5
     use_trend_exit = True
     max_bars = 60
-    mtf = "4h"
+    # higher timeframe auto-steps by base TF (matches the Pine: 1h->4h, 1d->1w, ...)
+    MTF_STEP = {"1m": "5min", "5m": "15min", "15m": "30min", "30m": "1h",
+                "1h": "4h", "4h": "1D", "1d": "1W", "1w": "1ME"}
 
     def populate_indicators(self, df: DataFrame, metadata: dict) -> DataFrame:
         df["ema_fast"] = ta.EMA(df, timeperiod=self.ema_fast)
@@ -52,13 +54,15 @@ class EMAMTFStoch(IStrategy):
         k, d = _stoch_kd(df, self.slen, self.sk, self.sd)
         df["k"], df["d"] = k, d
 
-        # MTF stochastic on the 4h resample, LSMA-smoothed, previous-closed bar (non-repainting)
+        # MTF stochastic on the auto-stepped higher timeframe, LSMA-smoothed,
+        # previous-closed bar (non-repainting). 1h base -> 4h; 1d base -> 1w.
+        mtf = self.MTF_STEP.get(self.timeframe, "4h")
         r = df[["date", "open", "high", "low", "close"]].copy().set_index("date")
-        h4 = r.resample(self.mtf).agg({"open": "first", "high": "max", "low": "min", "close": "last"}).dropna()
+        h4 = r.resample(mtf).agg({"open": "first", "high": "max", "low": "min", "close": "last"}).dropna()
         kk, dd = _stoch_kd(h4, self.slen, self.sk, self.sd)
         h4["mtfK"] = ta.LINEARREG(kk, timeperiod=self.slen)
         h4["mtfD"] = ta.LINEARREG(dd, timeperiod=self.slen)
-        h4 = h4[["mtfK", "mtfD"]].shift(1).dropna().reset_index()      # last CLOSED 4h bar
+        h4 = h4[["mtfK", "mtfD"]].shift(1).dropna().reset_index()      # last CLOSED higher-TF bar
         m = pd.merge_asof(df[["date"]].sort_values("date"), h4.sort_values("date"),
                           on="date", direction="backward")
         df["mtfK"] = m["mtfK"].values
