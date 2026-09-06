@@ -1,8 +1,26 @@
+# python / venv
 .venv/
-rawdata/
 __pycache__/
 *.pyc
-user_data/backtest_results/*.zip
-user_data/backtest_results/.last_result.json
-user_data/logs/
+
+# raw source data (rebuildable via download_data.sh + convert_data.py)
+rawdata/
+
+# freqtrade run artifacts
+user_data/backtest_results/
+user_data/hyperopt_results/
+user_data/notebooks/
 *.log
+user_data/*.sqlite*
+deploy/.monitor_state.json
+user_data/data_fut2/
+*_result*.json
+uploaded_results.json
+user_data/data_5m/
+user_data/data_15m/
+native_results.json
+notank_result.json
+user_data/data_noise/
+user_data/data_trim/
+user_data/data_daily/
+user_data/data_stocks/

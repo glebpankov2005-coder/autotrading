@@ -1,38 +1,38 @@
-"""Offline freqtrade backtest runner.
+"""Offline freqtrade runner stubbed for BTC/USDT + ETH/USDT spot (2-year tourney).
 
-The sandbox blocks every exchange host, but freqtrade insists on loading live
-market metadata (precision, limits, fees) before it will backtest. We feed it a
-static, realistic BTC/USDT spot-market definition so it never touches the
-network. Only exchange *metadata* is stubbed -- OHLCV data (local feather),
-indicators, entries/exits, and accounting are 100% real freqtrade.
+Same approach as run_backtest.py: feed ccxt static market metadata for both pairs
+so freqtrade never touches the network. OHLCV/indicators/accounting stay real.
 """
 import sys
 
 import ccxt
 import ccxt.async_support as ccxt_async
 
-# Realistic Binance BTC/USDT spot market (values match Binance's public specs).
-BTC_USDT_MARKET = {
-    "id": "BTCUSDT", "lowercaseId": "btcusdt", "symbol": "BTC/USDT",
-    "base": "BTC", "quote": "USDT", "settle": None,
-    "baseId": "BTC", "quoteId": "USDT", "settleId": None,
-    "type": "spot", "spot": True, "margin": True, "swap": False, "future": False,
-    "option": False, "index": None, "active": True, "contract": False,
-    "linear": None, "inverse": None, "subType": None,
-    "taker": 0.001, "maker": 0.001, "percentage": True, "tierBased": False,
-    "feeSide": "get", "contractSize": None,
-    "expiry": None, "expiryDatetime": None, "strike": None, "optionType": None,
-    "precision": {"amount": 1e-05, "price": 0.01, "base": 1e-08, "quote": 1e-08},
-    "limits": {
-        "leverage": {"min": None, "max": None},
-        "amount": {"min": 1e-05, "max": 9000.0},
-        "price": {"min": 0.01, "max": 1000000.0},
-        "cost": {"min": 5.0, "max": 9000000.0},
-        "market": {"min": 0.0, "max": 3200.0},
-    },
-    "created": None, "info": {},
-}
-MARKETS_LIST = [BTC_USDT_MARKET]
+
+def _mkt(base):
+    return {
+        "id": f"{base}USDT", "lowercaseId": f"{base.lower()}usdt", "symbol": f"{base}/USDT",
+        "base": base, "quote": "USDT", "settle": None,
+        "baseId": base, "quoteId": "USDT", "settleId": None,
+        "type": "spot", "spot": True, "margin": True, "swap": False, "future": False,
+        "option": False, "index": None, "active": True, "contract": False,
+        "linear": None, "inverse": None, "subType": None,
+        "taker": 0.001, "maker": 0.001, "percentage": True, "tierBased": False,
+        "feeSide": "get", "contractSize": None,
+        "expiry": None, "expiryDatetime": None, "strike": None, "optionType": None,
+        "precision": {"amount": 1e-05, "price": 0.01, "base": 1e-08, "quote": 1e-08},
+        "limits": {
+            "leverage": {"min": None, "max": None},
+            "amount": {"min": 1e-05, "max": 9000.0},
+            "price": {"min": 0.01, "max": 1000000.0},
+            "cost": {"min": 5.0, "max": 9000000.0},
+            "market": {"min": 0.0, "max": 3200.0},
+        },
+        "created": None, "info": {},
+    }
+
+
+MARKETS_LIST = [_mkt(b) for b in ("BTC", "ETH", "SOL", "BNB", "XRP", "LTC", "ADA")]
 
 
 def _patch(cls):
