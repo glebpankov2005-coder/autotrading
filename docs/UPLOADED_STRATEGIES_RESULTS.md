@@ -100,3 +100,41 @@ resolution, all five uploaded strategies lose −21% to −85% with 46–95% dra
 
 (Note: the uploaded strategies' window is ~1y, limited by 5m data depth; the Apex
 reference is its recent-2y figure. Windows differ slightly but the gap is overwhelming.)
+
+### EMAMTFStoch — EMA Trend + MTF Stochastic (rejected 2026-09) — 1h, long-only, stocks + crypto
+
+Pine port: EMA 38/62 trend filter + multi-timeframe stochastic timing (1h base → 4h
+confirmation), staged ATR risk (1.5×ATR stop → breakeven at 1R → ATR trail at 1.5R),
+stoch-fade/trend-flip exits, 60-bar time stop. Tested on **US stocks** (AAPL/MSFT/AMZN/
+GOOGL/META/TSLA/SPY/QQQ, no NVDA) and **crypto** (BTC/ETH/SOL).
+
+| Asset | Window | Return | Sharpe | PF | Trades | Win% | Max DD |
+|---|---|---|---|---|---|---|---|
+| Stocks | 2023-11 → 2026-09 (~2.8y) | **−1.0%** | −0.54 | 0.87 | 75 | 37% | −2.4% |
+| Crypto | 2017 → 2026 (~9y) | **−19.3%** | −0.92 | 0.50 | 270 | 25% | −22.0% |
+
+**Verdict: reject — no edge on either asset class.** Stocks: a slow bleeder (PF 0.87 loses
+~$0.13 per $1 risked, before real equity commissions/slippage); the tiny −2.4% DD is just
+small size + tight stops, not safety. Crypto: outright bad (−19%, PF 0.50). 74 of 75 stock
+exits are the ATR stop, only 1 the stochastic-fade — the "MTF stochastic timing" that is
+supposed to be the alpha almost never drives an exit; the (losing) ATR stop does all the work.
+Same lesson as the rest of this project: the entry/timing gimmick isn't the edge.
+
+**Methodology note (important for stocks):** freqtrade pads ~45% fake flat bars across
+weekend/overnight gaps when it loads equities into its 24/7 candle grid, which flattens the
+stochastic and starves the entry — its stock backtest made only **1 trade**. The real numbers
+above come from `tools/bt_intraday.py`, a **standalone no-gap-fill** backtester that reads the
+raw 1h feathers and re-implements the strategy (validated against the committed crypto 1h data).
+For any future intraday-stock backtest, use that runner, **not** freqtrade.
+
+Reproduce:
+```bash
+# fetch 1h feathers (VPS/laptop only; yfinance caps intraday at ~730d):
+python tools/fetch_stocks.py --interval 1h AAPL MSFT AMZN GOOGL META TSLA SPY QQQ
+# full clean backtest (no gap-fill):
+python tools/bt_intraday.py --datadir user_data/data_stocks/kraken \
+    --pairs AAPL MSFT AMZN GOOGL META TSLA SPY QQQ --quote USD --tf 1h
+# crypto sanity check:
+python tools/bt_intraday.py --datadir user_data/data/binance \
+    --pairs BTC ETH SOL --quote USDT --tf 1h
+```
